@@ -1,9 +1,8 @@
 package com.infosys.employeemanager.models;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.context.annotation.Primary;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,6 +10,7 @@ import java.util.Date;
 public class Employee {
 
     @Id
+    @Column(name = "employee_id",unique=true, nullable = false)
     private Integer employee_id;
 
     @Column(name="first_name")
@@ -146,5 +146,22 @@ public class Employee {
 
     public void setDepartment_id(Integer department_id) {
         this.department_id = department_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employee_id=" + employee_id +
+                ", first_name='" + first_name + '\'' +
+                ", last_name='" + last_name + '\'' +
+                ", email='" + email + '\'' +
+                ", phone_number='" + phone_number + '\'' +
+                ", hire_date=" + hire_date +
+                ", job_id='" + job_id + '\'' +
+                ", salary=" + salary +
+                ", commission_pct=" + commission_pct +
+                ", manager_id=" + manager_id +
+                ", department_id=" + department_id +
+                '}';
     }
 }
