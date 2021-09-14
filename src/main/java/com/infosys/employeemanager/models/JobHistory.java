@@ -21,7 +21,7 @@ public class JobHistory {
     private Date end_date;
 
     @Column(name="job_id")
-    private Integer job_id;
+    private String job_id;
 
     @Column(name="department_id")
     private Integer department_id;
@@ -29,7 +29,7 @@ public class JobHistory {
     public JobHistory() {
     }
 
-    public JobHistory(Integer employee_id, Date start_date, Date end_date, Integer job_id, Integer department_id) {
+    public JobHistory(Integer employee_id, Date start_date, Date end_date, String job_id, Integer department_id) {
         this.employee_id = employee_id;
         this.start_date = start_date;
         this.end_date = end_date;
@@ -61,11 +61,11 @@ public class JobHistory {
         this.end_date = end_date;
     }
 
-    public Integer getJob_id() {
+    public String getJob_id() {
         return job_id;
     }
 
-    public void setJob_id(Integer job_id) {
+    public void setJob_id(String job_id) {
         this.job_id = job_id;
     }
 

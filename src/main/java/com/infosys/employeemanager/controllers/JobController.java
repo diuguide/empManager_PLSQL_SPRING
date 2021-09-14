@@ -1,6 +1,8 @@
 package com.infosys.employeemanager.controllers;
 
 import com.infosys.employeemanager.models.Job;
+import com.infosys.employeemanager.models.JobHistory;
+import com.infosys.employeemanager.repos.JobHistoryRepository;
 import com.infosys.employeemanager.repos.JobRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,9 +18,11 @@ public class JobController {
 
     private final Logger logger = LoggerFactory.getLogger(JobController.class);
     private final JobRepository jobRepository;
+    private final JobHistoryRepository jobHistoryRepository;
 
-    public JobController(JobRepository jobRepository) {
+    public JobController(JobRepository jobRepository, JobHistoryRepository jobHistoryRepository) {
         this.jobRepository = jobRepository;
+        this.jobHistoryRepository = jobHistoryRepository;
     }
 
     @GetMapping(value="/all", produces=APPLICATION_JSON_VALUE)
@@ -36,5 +40,8 @@ public class JobController {
         jobRepository.deleteById(id);
     }
 
-
+    @GetMapping(value="/allJobHistory", produces=APPLICATION_JSON_VALUE)
+    public List<JobHistory> getJobHistoryAll() {
+        return jobHistoryRepository.findAll();
+    }
 }

@@ -11,7 +11,7 @@ public class Country {
 
     @Id
     @Column(name="country_id")
-    private Integer country_id;
+    private String country_id;
 
     @Column(name="country_name")
     private String country_name;
@@ -22,17 +22,17 @@ public class Country {
     public Country() {
     }
 
-    public Country(Integer country_id, String country_name, Integer region_id) {
+    public Country(String country_id, String country_name, Integer region_id) {
         this.country_id = country_id;
         this.country_name = country_name;
         this.region_id = region_id;
     }
 
-    public Integer getCountry_id() {
+    public String getCountry_id() {
         return country_id;
     }
 
-    public void setCountry_id(Integer country_id) {
+    public void setCountry_id(String country_id) {
         this.country_id = country_id;
     }
 
