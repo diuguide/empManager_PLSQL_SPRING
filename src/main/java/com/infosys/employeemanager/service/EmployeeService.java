@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class EmployeeService {
 
     private final Logger logger = LoggerFactory.getLogger(EmployeeService.class);
-    private EmployeeRepository employeeRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository) { this.employeeRepository= employeeRepository;};
@@ -22,6 +22,10 @@ public class EmployeeService {
 
     public void removeEmployee(Integer empId) {
         employeeRepository.deleteById(empId);
+    }
+
+    public Employee updateEmployeeRecord(Employee emp) {
+        return employeeRepository.save(emp);
     }
 
 

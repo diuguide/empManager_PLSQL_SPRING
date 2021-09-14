@@ -50,13 +50,21 @@ public class EmployeeController {
     @PostMapping(value="/addEmp", produces=APPLICATION_JSON_VALUE, consumes = APPLICATION_JSON_VALUE)
     public ResponseEntity<?> addEmployee(@RequestBody Employee emp) {
         Employee newEmp = employeeService.addEmployee(emp);
+        logger.info(String.format("New employee %s added to database successfully", newEmp.getEmployee_id()));
         return ResponseEntity.ok().body(newEmp);
     }
 
     @DeleteMapping(value="/delete/{id}")
     public ResponseEntity<?> removeEmp(@PathVariable Integer id) {
         employeeService.removeEmployee(id);
+        logger.info("Employee deleted from DB");
         return ResponseEntity.ok().body(String.format("Employee %s has Been Removed", id));
+    }
+
+    @PostMapping(value="/update", consumes=APPLICATION_JSON_VALUE, produces=APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> updateEmpRecord(@RequestBody Employee emp) {
+        Employee updatedEmp = employeeService.updateEmployeeRecord(emp);
+        return ResponseEntity.ok().body(updatedEmp);
     }
 
 }
